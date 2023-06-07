@@ -22,7 +22,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.example.login.databinding.ActivitySigInBinding
 
-class SigInActivity : AppCompatActivity() {
+class SigInActivity : AppCompatActivity(),View.OnClickListener {
     private lateinit var binding: ActivitySigInBinding
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var  mCallbackManager:CallbackManager
@@ -76,7 +76,7 @@ class SigInActivity : AppCompatActivity() {
                     {
                         Toast.makeText(this,"Hello" ,Toast.LENGTH_SHORT).show()
 
-                        val intent=Intent(this,MainActivity::class.java)
+                        val intent=Intent(this,MainActivity2::class.java)
                         startActivity(intent)
                         finish()
                     }
@@ -123,7 +123,7 @@ class SigInActivity : AppCompatActivity() {
             if (it.isSuccessful) {
                 binding.progressBar.visibility=View.GONE
                 Toast.makeText(this, "done", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, MainActivity2::class.java)
                 startActivity(intent)
             } else {
                 binding.progressBar.visibility=View.GONE
@@ -143,7 +143,7 @@ class SigInActivity : AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     Toast.makeText(this,"Hello" ,Toast.LENGTH_SHORT).show()
 
-                    val intent=Intent(this,MainActivity::class.java)
+                    val intent=Intent(this,MainActivity2::class.java)
                     startActivity(intent)
                     finish()
                     Log.d(TAG, "signInWithCredential:success")
@@ -162,5 +162,9 @@ class SigInActivity : AppCompatActivity() {
 
         // Pass the activity result back to the Facebook SDK
        mCallbackManager .onActivityResult(requestCode, resultCode, data)
+    }
+
+    override fun onClick(p0: View?) {
+
     }
 }
